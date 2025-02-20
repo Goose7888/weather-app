@@ -6,7 +6,7 @@
 // Yeah, yeah. Ideally this API key would not be here at all.
 // Cry about it 🐦
 const strAPIKey = 'a6f8a8b7fd77485585b173540251902'
-const strBaseURL = 'http://api.weatherapi.com/v1/'
+const strBaseURL = 'https://api.weatherapi.com/v1/'
 
 // Global variable will keep track of units
 var strUnits = "Fahrenheit"
