@@ -7,15 +7,10 @@
 // Cry about it 🐦
 const strAPIKey = 'a6f8a8b7fd77485585b173540251902'
 const strBaseURL = 'http://api.weatherapi.com/v1/'
-// const cityName = 'Cookeville'
 
-
-// async function fetchCurrentWeatherCity()
-// {
-    
-// }
 
 // Returns wetherdata from weatherapi.com
+// Location is set to auto:ip (it finds a location based on your ip)
 async function fetchCurrentWeatherAuto()
 {
     try
@@ -50,12 +45,17 @@ async function updateValues()
 {
     document.querySelector('#txtCurrentTemperature').innerHTML = "Fetching..."
     document.querySelector('#txtCurrentHumidity').innerHTML = "Fetching..."
-
+    document.querySelector('#txtConditions').innerHTML = "Fetching..."
+    document.querySelector('#imgConditions').setAttribute('src', 'assets/loading.gif')
+    document.querySelector('#imgConditions').setAttribute('alt', 'Fetching...')
 
     objWeatherData = await fetchCurrentWeatherAuto()
 
     document.querySelector('#txtCurrentTemperature').innerHTML = objWeatherData.current.temp_f
-    document.querySelector('#txtCurrentHumidity').innerHTML = objWeatherData.current.humidity
+    document.querySelector('#txtCurrentHumidity').innerHTML = objWeatherData.current.humidity + '%'
+    document.querySelector('#txtConditions').innerHTML = objWeatherData.current.condition.text
+    document.querySelector('#imgConditions').setAttribute('src', 'https:' + objWeatherData.current.condition.icon)
+    document.querySelector('#imgConditions').setAttribute('alt', objWeatherData.current.condition.text)
 }
 
 
